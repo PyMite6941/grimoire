@@ -43,6 +43,29 @@ Because it's plain SQLite + a documented codec, anything in Python can read it
 `--db PATH` selects an alternate tome (default: `grimoire.db` beside the script).
 Indexed file types: text, Markdown, HTML/XML, code, JSON/CSV, logs, config.
 
+## Importing a library (Project Gutenberg & friends)
+
+Don't have a corpus yet? `import_data.py` pulls **public-domain texts** straight
+into the tome — no account, no API key, standard-library only:
+
+```bash
+python import_data.py search "sherlock holmes"     # find Gutenberg books
+python import_data.py get 1661 --ingest            # download PG #1661 + fold in
+python import_data.py popular --count 50 --ingest  # top 50 Gutenberg books
+python import_data.py wikisource "The Art of War" --ingest
+python import_data.py sources                       # list supported sources
+```
+
+| Source | How |
+|---|---|
+| **Project Gutenberg** | 70k+ books via the free `gutendex.com` catalog API (search / by-id / most-popular). |
+| **Wikisource** | English Wikisource page text via the MediaWiki API. |
+| **Standard Ebooks** | Polished public-domain editions — distributed as EPUB; convert to text then `ingest` (see `sources`). |
+
+Texts download into `backend/data/corpus/` (gitignored); re-running skips what
+you already have, so the library grows incrementally. Drop `--ingest` to just
+download, then `./run.sh ingest backend/data/corpus` yourself.
+
 ## Python API
 
 ```python
