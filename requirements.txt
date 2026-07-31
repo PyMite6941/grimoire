@@ -1,0 +1,7 @@
+zstandard>=0.22
+questionary>=2.0.0
+rich>=13.0.0
+textual>=8.0.0
+# libzim — optional; required only to ingest .zim archives (Kiwix/DevDocs).
+# Install separately: pip install libzim
+# libzim

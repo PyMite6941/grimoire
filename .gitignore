@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+# corpora (.zim) and the built tome (.db) are data, not source — rebuild via `ingest`
+*.db
+*.db-wal
+*.db-shm
+*.zim
+backend/data/
